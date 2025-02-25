@@ -1,12 +1,32 @@
 package com.desarrollo.complexivo_app.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity(name="users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private String lastname;
     private String email;
+    @Column(unique = true)
     private String username;
     private String password;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -24,7 +44,6 @@ public class User {
         this.lastname = lastname;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -37,7 +56,7 @@ public class User {
         return username;
     }
 
-    public void setUser(String name) {
+    public void setUser(String username) {
         this.username = username;
     }
 
@@ -45,7 +64,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String name) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }
